@@ -14,9 +14,4 @@ export class AppComponent {
     this.svc.printToConsole('Got the service!!');
   }
 
-  ngOnInit() {
-    // tslint:disable-next-line: prefer-const
-    let obs = this.http.get('https://api.github.com/users/manpreetc90');
-    obs.subscribe((response) => console.log(response));
-  }
 }

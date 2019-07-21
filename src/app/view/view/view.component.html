@@ -1,1 +1,9 @@
-<p>view works!</p>
+UserName : <input type="text" [(ngModel)]="userName">
+<button (click)="search()">Search</button>
+
+<div *ngIf="response">
+<p>Login Name : {{ response.login }}</p>
+<p>Number of Repos : {{ response.public_repos }}</p>
+<p>Number of gists : {{ response.public_gists }}</p>
+<p>No Of Followers : {{ response.followers }}</p>
+</div>

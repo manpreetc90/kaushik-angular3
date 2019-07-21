@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TestService } from 'src/app/test.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-view',
@@ -7,12 +9,21 @@ import { TestService } from 'src/app/test.service';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
+  // tslint:disable-next-line: no-inferrable-types
+  userName: string = '';
+  response: any ;
+  constructor(private http: HttpClient) {
 
-  constructor(svc: TestService) {
-    svc.printToConsole('from inner module/Service');
   }
 
   ngOnInit() {
   }
 
+  search() {
+    this.http.get('https://api.github.com/users/' + this.userName)
+    .subscribe((response) => {
+      this.response = response;
+      console.log(this.response);
+    });
+  }
 }
